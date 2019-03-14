@@ -21,7 +21,9 @@ class FriendlyChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Friendlychat',
-        theme: defaultTargetPlatform == TargetPlatform.iOS ? kIOSTheme :kDefaultTheme,
+        theme: defaultTargetPlatform == TargetPlatform.iOS
+            ? kIOSTheme
+            : kDefaultTheme,
         home: ChatScreen());
   }
 }
@@ -45,8 +47,10 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Friendlychat'),
-      elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,),
+      appBar: AppBar(
+        title: Text('Friendlychat'),
+        elevation: Theme.of(context).platform == TargetPlatform.iOS ? 0.0 : 4.0,
+      ),
       body: _buildChatScreen(),
     );
   }
@@ -97,15 +101,19 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
             )),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 4),
-              child: Theme.of(context).platform ==TargetPlatform.iOS ? 
-              CupertinoButton(
-                child: new Text("Send"),
-                onPressed: _isComposing ? () => _handleSubmitted(_textController.text) : null,
-              ):
-              IconButton(
-                icon: Icon(Icons.send),
-                onPressed: _isComposing ? () => _handleSubmitted(_textController.text) : null,
-              )              ,
+              child: Theme.of(context).platform == TargetPlatform.iOS
+                  ? CupertinoButton(
+                      child: new Text("Send"),
+                      onPressed: _isComposing
+                          ? () => _handleSubmitted(_textController.text)
+                          : null,
+                    )
+                  : IconButton(
+                      icon: Icon(Icons.send),
+                      onPressed: _isComposing
+                          ? () => _handleSubmitted(_textController.text)
+                          : null,
+                    ),
             )
           ],
         ));
@@ -144,8 +152,8 @@ class ChatMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizeTransition(
-        sizeFactor:
-            CurvedAnimation(parent: animationController, curve: Curves.linearToEaseOut),
+        sizeFactor: CurvedAnimation(
+            parent: animationController, curve: Curves.linearToEaseOut),
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
           child: Row(children: <Widget>[
